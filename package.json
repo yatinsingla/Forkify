@@ -1,0 +1,37 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "recipe web application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yatinsingla/Forkify.git"
+  },
+  "keywords": [
+    "javascript",
+    "nodeJs"
+  ],
+  "author": "Yatin Singla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yatinsingla/Forkify/issues"
+  },
+  "homepage": "https://github.com/yatinsingla/Forkify#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
+}
