@@ -1,6 +1,7 @@
 // Global app controller
 
 import Search from './models/Search';
+import Recipe from './models/Recipe';
 import { DOMelements, renderLoader, clearLoader } from './views/base';
 import * as viewSearch from './views/viewSearch';
 
@@ -35,12 +36,12 @@ const controlSearch = async () => {
         viewSearch.renderResult(state.search.data);
         //console.log(state.search.data);
     }
-}
+};
 
 DOMelements.searchForm.addEventListener('submit', (event)=>{
     event.preventDefault();
     controlSearch();
-})
+});
 
 DOMelements.searchResultPages.addEventListener('click', (event) => {
     const btn = event.target.closest('.btn-inline');
@@ -51,4 +52,33 @@ DOMelements.searchResultPages.addEventListener('click', (event) => {
         viewSearch.clearSearchResults();
         viewSearch.renderResult(state.search.data, goToPage);
     }
-})
+});
+
+const controlRecipe = async () => {
+    const id = window.location.hash.replace('#', '');
+    console.log(id);
+
+    if(id) {
+        // Prepare UI for changes
+
+        // Create new Recipe Order
+
+        // Get Recipe data and parseIngredients
+        state.recipe = new Recipe(id);
+        await state.recipe.getRecipe();
+        
+        window.r = state.recipe;
+        console.log(r.ingredients);
+        // Calculate servings and time
+        state.recipe.calcTime();
+        state.recipe.calcServings();
+        // Render recipe
+
+        console.log(state.recipe);
+    }
+}
+
+//window.addEventListener('hashchange', controlRecipe);
+//window.addEventListener('load', controlRecipe);
+
+['hashchange', 'load'].forEach((event) => addEventListener(event, controlRecipe));
