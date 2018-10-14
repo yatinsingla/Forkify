@@ -5,6 +5,7 @@ import Recipe from './models/Recipe';
 import { DOMelements, renderLoader, clearLoader } from './views/base';
 import * as viewSearch from './views/viewSearch';
 import * as viewRecipe from './views/viewRecipe';
+//import { stat } from 'fs';
 
 /* Global state of the app
 *   - Search Object
@@ -97,3 +98,20 @@ const controlRecipe = async () => {
 //window.addEventListener('load', controlRecipe);
 
 ['hashchange', 'load'].forEach((event) => addEventListener(event, controlRecipe));
+
+// handling recipe button clicks
+DOMelements.recipeList.addEventListener('click', e => {
+    if(e.target.matches('.btn-decrease, .btn-decrease *')) {
+        // decrease button clicked
+        if(state.recipe.servings > 1) {
+            state.recipe.updateServings('dec');
+            viewRecipe.updateServingsIngredients(state.recipe);
+        }
+        
+    } else if(e.target.matches('.btn-increase, .btn-increase *')) {
+        // increase button clicked
+        state.recipe.updateServings('inc');
+        viewRecipe.updateServingsIngredients(state.recipe);
+    }
+    console.log(state.recipe.ingredients);
+})
