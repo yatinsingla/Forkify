@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "recipe web application",
   "main": "index.js",
+  "types": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",

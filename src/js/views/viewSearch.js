@@ -8,7 +8,16 @@ export const clearInput = () => {
 export const clearSearchResults = () => {
     DOMelements.searchResultList.innerHTML = '';
     DOMelements.searchResultPages.innerHTML = ''
-}
+};
+
+export const highlightSelected = (id) => {
+    const resultArr = Array.from(document.querySelectorAll('.results__link'));
+    resultArr.forEach(el => {
+        el.classList.remove('results__link--active');
+    })
+
+    document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+};
 
 const limitTitle = (title, limit = 17) => {
     const newTitle = [];

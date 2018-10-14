@@ -10,7 +10,7 @@ export default class Recipe {
         
         try {
             const res = await axios(`${proxy}https://www.food2fork.com/api/get?key=${key}&rId=${this.id}`);
-            this.data = res.data.recipe;
+            //this.data = res.data.recipe;
             this.title = res.data.recipe.title;
             this.author = res.data.recipe.publisher;
             this.img = res.data.recipe.publisher_url;
@@ -39,6 +39,7 @@ export default class Recipe {
         const newIngredient = this.ingredients.map((el) => {
             // 1) Uniform units
             let ingredient = el.toLowerCase();
+            
             unitsLong.forEach((unit, index) => {
                 ingredient = ingredient.replace(unit, unitsShort[index]);
             });
@@ -57,9 +58,14 @@ export default class Recipe {
                 const arrCount = arrIngredients.slice(0, unitIndex);
                 let count;
                 if (arrCount === 1) {
-                    count = arrIngredients[0];
+                    if (arrIngredients[0].includes('-'))
+                        count = eval(arrIngredients[0].replace('-', '+'));
+                    else
+                        count = arrIngredients[0]
                 } else {
+                  
                     count = eval(arrIngredients.slice(0, unitIndex).join('+'));
+                    //console.log(count);
                 }
 
                 objIngredient = {
@@ -71,7 +77,7 @@ export default class Recipe {
             else if (parseInt(arrIngredients[0], 10)) {
                 // no unit but first elemnt is number
                 objIngredient = {
-                    count: parseInt(eval(arrIngredients[0].replace('-', '+')),10),
+                    count: parseInt(arrIngredients[0],10),
                     unit: '',
                     ingredient: arrIngredients.slice(1).join(' ')
                 }
