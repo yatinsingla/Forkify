@@ -4,7 +4,8 @@ export const DOMelements = {
     searchResult: document.querySelector('.results'),
     searchResultList: document.querySelector('.results__list'),
     searchResultPages: document.querySelector('.results__pages'),
-    recipeList: document.querySelector('.recipe')
+    recipeList: document.querySelector('.recipe'),
+    shoppingList: document.querySelector('.shopping__list')
 }
 
 export const renderLoader = (parent) => {

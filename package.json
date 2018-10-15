@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "uniqid": "^5.0.3"
   }
 }
