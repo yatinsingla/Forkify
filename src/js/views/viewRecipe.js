@@ -25,7 +25,7 @@ const formatValue = (count) => {
 }
 */
 
-export const renderRecipes = (recipe) => {
+export const renderRecipes = (recipe, isLiked) => {
     const markup = `
         <figure class="recipe__fig">
             <img src="${recipe.url}" alt="${recipe.title}" class="recipe__img">
@@ -64,7 +64,7 @@ export const renderRecipes = (recipe) => {
             </div>
             <button class="recipe__love">
                 <svg class="header__likes">
-                    <use href="img/icons.svg#icon-heart-outlined"></use>
+                    <use href="img/icons.svg#${isLiked? 'icon-heart' : 'icon-heart-outlined'}"></use>
                 </svg>
             </button>
         </div>
