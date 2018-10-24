@@ -20,7 +20,6 @@ import * as viewLikes from './views/viewLikes';
 */
 
 const state = {}
-window.state = state;
 
 /////////// ******Search Controller****** //////////////////////
 
@@ -73,7 +72,7 @@ DOMelements.searchResultPages.addEventListener('click', (event) => {
 
 const controlRecipe = async () => {
     const id = window.location.hash.replace('#', '');
-    console.log(id);
+    
 
     if(id) {
         // Prepare UI for changes
@@ -196,7 +195,7 @@ window.addEventListener('load', () => {
 
     // render the existing likes
     state.likes.likes.forEach(like => viewLikes.renderLikes(like));
-    
+
 });
 
 // handling recipe button clicks (event delegation)
